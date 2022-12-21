@@ -19,6 +19,8 @@
         // returns an object with random values scaled {x: 33, y: 21}
         let velocity = setToRandom(10); // {x:?, y:?}
         let position = setToRandom(200);
+        let chomp = false;
+        // console.log(chomp);
         // Add image to div id = game
         let game = document.getElementById('game');
         let newimg = document.createElement('img');
@@ -37,7 +39,8 @@
         return {
             position,
             velocity,
-            newimg
+            newimg,
+            chomp
         }
     }
 
@@ -45,6 +48,8 @@
         //loop over pacmen array and move each one and move image in DOM
         pacMen.forEach((item) => {
             checkCollisions(item)
+            item.chomp = !item.chomp;
+            item.newimg.src = pacArray[0][item.chomp ? 1 : 0];
             item.position.x += item.velocity.x;
             item.position.y += item.velocity.y;
 
@@ -58,7 +63,14 @@
         //
         // detect collision with all walls and make pacman bounce
         //
-        
+        let w = window.innerWidth;
+        if (item.position.x < 0 || item.position.x > w) {
+            item.velocity.x = item.velocity.x * -1;
+        }
+        let h = window.innerHeight;
+        if (item.position.y < 0 || item.position.y > h) {
+            item.velocity.y = item.velocity.y * -1;
+        }
     }
 
     function makeOne() {
