@@ -1,7 +1,8 @@
+console.clear();
 var pos = 0;
 const pacArray = [
-  ["PacMan1.png", "PacMan2.png"],
-  ["PacMan3.png", "PacMan4.png"],
+  ["./images/PacMan1.png", "./images/PacMan2.png"],
+  ["./images/PacMan3.png", "./images/PacMan4.png"],
 ];
 var direction = 0;
 const pacMen = []; // This array holds all the pacmen
@@ -17,6 +18,7 @@ function makePac() {
   // returns an object with random values scaled {x: 33, y: 21}
   let velocity = setToRandom(10); // {x:?, y:?}
   let position = setToRandom(200);
+  // console.log("x:" + position.x + " y:" + position.y);
   let chomp = false;
   // console.log(chomp);
   // Add image to div id = game
@@ -73,4 +75,7 @@ function checkCollisions(item) {
 
 function makeOne() {
   pacMen.push(makePac()); // add a new PacMan
+  // pacMen.forEach(element => {
+  //   console.log(element.newimg)
+  // });
 }
