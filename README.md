@@ -7,4 +7,4 @@ To run, open index.html in a web browser.
 
 Roadmap: Implement hit detection between pacmen.
 
-<img src="PacMan1.png">
+<img src="images/PacMan1.png">
